@@ -1,0 +1,42 @@
+.swiper-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: 90%;
+    margin-left: 5rem;
+    margin-top: 1rem;
+    
+  }
+  
+  .nav-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+  }
+  
+  .nav-button.prev {
+    left: 10px;
+  }
+  
+  .nav-button.next {
+    right: 10px;
+  }
+  
+  .swiper-wrapper {
+    display: flex;
+    gap: 16px; /* Adjust spacing between cards */
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .swiper-slide {
+    flex: 0 0 calc(100% / var(--visible-cards, 5)); /* Dynamic card width based on visibleCards */
+    display: flex;
+    justify-content: center;
+  }
+  

@@ -4,6 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CustomPasswordValidators } from '../../custom-validators/custom.password.validators';
 
+
 import {
   FormControl,
   FormGroup,
@@ -29,6 +30,7 @@ import { SnackbarService } from '../../services/sanckbar.service';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
+    RouterModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

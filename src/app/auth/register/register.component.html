@@ -6,7 +6,7 @@
   
       <mat-card-content >
         <form
-          [formGroup]="sellerForm"
+          [formGroup]="customerForm"
           class="my-custom-form-field"
           (submit)="collectData()"
         >
@@ -62,18 +62,7 @@
               </mat-form-field>
             </div>
     
-            <div formGroupName="role_specific_details">
-                <mat-form-field appearance="outline">
-                    <mat-label>GST Number</mat-label>
-                    <input
-                      matInput
-                      formControlName="gst_no"
-                      placeholder="GST_123_p"
-                    />
-                    <mat-icon matPrefix>phone</mat-icon>
-                    <mat-error>{{ errorMessageGst_no }}</mat-error>
-                  </mat-form-field>
-            </div>
+       
     
             <div class="flexItems">
               <mat-form-field appearance="outline" class="flex-item">

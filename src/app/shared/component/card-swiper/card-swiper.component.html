@@ -1,0 +1,26 @@
+<div class="swiper-container">
+    <button class="nav-button prev" (click)="onPrev()" [disabled]="currentIndex === 0">
+      ‹
+    </button>
+    {{visibleCards}}  
+    <div class="swiper-wrapper">
+      <div 
+        class="swiper-slide" 
+        *ngFor="let card of cards; let i = index" 
+        [class.visible]="i >= currentIndex && i < currentIndex + visibleCards"
+        [style.transform]="'translateX(' + (-currentIndex * 100 / visibleCards) + '%)'"
+         [style.transition]="'transform ' + swipeSpeed + 'ms'"
+        (click)="onCardClick(card)"
+        
+      >
+    
+      <app-product-item [product]="card"></app-product-item>
+      </div>
+    </div>
+    
+    <button class="nav-button next" (click)="onNext()" [disabled]="currentIndex >= cards.length - visibleCards">
+      ›
+    </button>
+  </div>
+  
+  

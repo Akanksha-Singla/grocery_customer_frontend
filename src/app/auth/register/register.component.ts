@@ -15,7 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from '../services/auth.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Router,RouterModule } from '@angular/router';
-// import { SnackbarService } from '../../shared/services/snackbar.service';
+import { SnackbarService } from '../services/sanckbar.service';
 
 @Component({
   selector: 'app-register',
@@ -36,7 +36,7 @@ import { Router,RouterModule } from '@angular/router';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  sellerForm: FormGroup;
+  customerForm: FormGroup;
 
  
 
@@ -44,9 +44,10 @@ export class RegisterComponent {
    
     private authService: AuthService,
     
-    private router:Router
+    private router:Router,
+    private snackbar:SnackbarService
   ) {
-    this.sellerForm = new FormGroup({
+    this.customerForm = new FormGroup({
       username: new FormControl('', [
         Validators.required,
         Validators.pattern(/^[a-zA-Z0-9.\-_$@*!]+$/),
@@ -65,14 +66,12 @@ export class RegisterComponent {
         Validators.required,
         Validators.pattern(/^[0-9]{10}$/),
       ]),
-      role: new FormControl("Seller"),
+      role: new FormControl("Customer"),
       address: new FormControl('', [
         Validators.minLength(5),
         Validators.maxLength(50),
       ]),
-      role_specific_details: new FormGroup({
-        gst_no: new FormControl('', Validators.required),
-      }),
+     
     });
   }
 
@@ -86,11 +85,11 @@ export class RegisterComponent {
     const confirmPassword = this.confirmPassword?.value;
     if (password && confirmPassword) {
       const matchError = password === confirmPassword ? null : { match: true };
-      this.sellerForm.get('confirmPassword')?.setErrors(matchError);
+      this.customerForm.get('confirmPassword')?.setErrors(matchError);
     }
   }
   get username() {
-    return this.sellerForm.get('username');
+    return this.customerForm.get('username');
   }
   get errorMessageUserName(): string {
     const control = this.username;
@@ -113,7 +112,7 @@ export class RegisterComponent {
     }
   }
   get email() {
-    return this.sellerForm.get('email');
+    return this.customerForm.get('email');
   }
 
   get errorMessageEmail(): string {
@@ -133,7 +132,7 @@ export class RegisterComponent {
     }
   }
   get contact_number() {
-    return this.sellerForm.get('contact_number');
+    return this.customerForm.get('contact_number');
   }
   get errorMessageContact_number(): string {
     const control = this.contact_number;
@@ -152,7 +151,7 @@ export class RegisterComponent {
     }
   }
   get address() {
-    return this.sellerForm.get('address');
+    return this.customerForm.get('address');
   }
   get errorMessageAddress(): string {
     const control = this.address;
@@ -173,7 +172,7 @@ export class RegisterComponent {
     }
   }
   get password() {
-    return this.sellerForm.get('password');
+    return this.customerForm.get('password');
   }
   get errorMessagePassword(): string {
     const control = this.password;
@@ -201,10 +200,10 @@ export class RegisterComponent {
   }
 
   get confirmPassword() {
-    return this.sellerForm.get('confirmPassword');
+    return this.customerForm.get('confirmPassword');
   }
   get errorMessageConfirmPassword(): string {
-    const control = this.sellerForm.get('confirmPassword');
+    const control = this.customerForm.get('confirmPassword');
     if (!control) return '';
 
     if (control.touched && control.dirty) {
@@ -220,49 +219,33 @@ export class RegisterComponent {
  
   
 
-  get gst_no() {
-    return this.sellerForm.get('role_specific_details.gst_no');
-  }
-  get errorMessageGst_no(): string {
-    const control = this.gst_no;
-    if (!control) return '';
-    if (control.touched && control.dirty) {
-      switch (true) {
-        case control.hasError('required'):
-          return 'Please enter gst_no';
-        default:
-          return '';
-      }
-    } else {
-      return '';
-    }
-  }
+
 
 
 
 
 
   collectData() {
-    console.log('employee', this.sellerForm.value);
-    if (this.sellerForm.valid) {
-      const { confirmPassword, ...formData } = this.sellerForm.value;
+    console.log('employee', this.customerForm.value);
+    if (this.customerForm.valid) {
+      const { confirmPassword, ...formData } = this.customerForm.value;
       this.authService.register(formData).subscribe({
         next: (responseData) => {
           console.log('Register', responseData);
           if (responseData.statusCode === 201) {
             console.log('Admin Registered Data', responseData);
-            // this.snackbarService.showSuccess('Registration successfully!');
+            this.snackbar.showSuccess('Registration successfully!');
             this.router.navigate(['/']);
           }
         },
         error: (error) => {
-          // this.snackbarService.showError('Registration failed:');
+          this.snackbar.showError('Registration failed:');
           console.log('Registration failed:...', error);
         },
       });
     } else {
-      // markAllControlsAsDirtyAndTouched(this.sellerForm);
-      // this.snackbarService.showError('Please Fill in all required information');
+      // markAllControlsAsDirtyAndTouched(this.customerForm);
+      this.snackbar.showError('Please Fill in all required information');
     }
   }
 }

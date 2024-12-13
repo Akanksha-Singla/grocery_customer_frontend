@@ -1,0 +1,120 @@
+.tiffin-card-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    flex-direction: column; 
+    margin: 10px;
+  }
+  
+  .my-custom-card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-flex {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+  }
+  
+  .header-text {
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  .tiffin-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 10px 0;
+  }
+  
+  .actions-flex {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 10px;
+  }
+  
+  .my-custom-button {
+    flex-grow: 1; 
+    margin: 0 5px; 
+  }
+  
+ .rating-container{
+  color: #ff7400;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+   .tiffin-card-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    flex-direction: column; 
+    margin: 10px;
+  }
+  
+  .my-custom-card {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header-flex {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+  }
+  
+  .header-text {
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  .tiffin-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 10px 0;
+  }
+  
+  .actions-flex {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 10px;
+  }
+  
+  .my-custom-button {
+    flex-grow: 1; 
+    margin: 0 5px; 
+  }
+  
+a{
+  text-decoration: none;
+  color:grey
+}
+
+.leftQuantity{
+  color:rgb(99, 95, 95);
+  // background: var(--mat-sys-primary);
+  font-size: small;
+ 
+ 
+}
+.description
+{ font-size:0.9rem  }

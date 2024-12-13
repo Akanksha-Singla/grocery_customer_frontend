@@ -5,6 +5,8 @@
     z-index: 1000;
    
     box-shadow: 0 4px 6px #2d442c;
+    display: flex;
+   
   }
   
  
@@ -21,6 +23,8 @@
   }
   
   .space-between {
+    padding-right: 1rem;
+    text-align:end;
     flex: 1 1 auto;
   }
   
@@ -78,4 +82,18 @@
   
   .image-icon:hover {
     cursor: pointer;
+  }
+
+  .outlet{
+    position: relative;
+    margin:0.3rem;
+    padding: 70px;
+  }
+  .body-container {
+    position: relative;
+    margin:0.5rem;
+    padding: 70px;
+    max-width:1800px;
+    margin-left: auto;
+    margin-right: auto;
   }

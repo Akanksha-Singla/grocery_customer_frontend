@@ -1,0 +1,59 @@
+<div class="tiffin-card-container">
+    <mat-card class="my-custom-card" appearance="outlined">
+     <img 
+        class="product-image" 
+        mat-card-image 
+        [src]="product?.imageUrl ? product?.imageUrl : 'https://static9.depositphotos.com/1625039/1128/i/450/depositphotos_11286822-stock-photo-fruit-and-vegetables.jpg'" 
+        alt="productImage"
+      >
+      <mat-card-content>
+    
+     <mat-card-title> {{ product?.name }} </mat-card-title>
+        <div>
+            
+          <mat-icon  class="rating-container" *ngFor="let star of generateStars(product.rating)">{{star}}</mat-icon>
+        </div>
+        <p class="leftQuantity"> Available {{ product?.quantity}} </p>   
+     <mat-card-subtitle>Price: {{ product?.price }}  </mat-card-subtitle>
+      
+      </mat-card-content>
+  
+        <mat-card-actions class="actions-flex">
+  
+          <button mat-stroked-button class="my-custom-button" (click)="buyNow(product._id)">Buy Now</button>
+         
+     
+          @if(!flag){
+          
+            <button mat-flat-button class="my-custom-button" (click)="addToCart(product._id)">Add to cart</button>
+           }
+     
+          @if(flag){
+          <button mat-flat-button class="my-custom-button" [routerLink]="['/navbar/cart']">Go To Cart</button>
+          }
+        
+         </mat-card-actions>
+      
+    
+    </mat-card>
+   
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
+  
+  
+    

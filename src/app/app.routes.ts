@@ -3,6 +3,7 @@ import { LoginComponent } from './auth/login/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './auth/gaurds/auth-guards';
 import { LayoutComponent } from './layout/layout/layout.component';
+import { CartpageComponent } from './features/cart/cartpage/cartpage.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -31,19 +32,12 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'add-product',
-        loadComponent: () =>
-          import('./features/product/add-product/add-product/add-product.component').then(
-            (m) => m.AddProductComponent
-          ),
-      },
-      {
-        path: 'edit-product/:_id',
-        loadComponent: () =>
-          import('./features/product/add-product/add-product/add-product.component').then(
-            (m) => m.AddProductComponent
-          ),
-      },
+        path:'cart',
+        loadComponent:()=> import('./features/cart/cartpage/cartpage.component').then(
+          (m)=>CartpageComponent
+        )
+      }
+     
     ],
   },
 

@@ -7,9 +7,10 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule,Router } from '@angular/router';
 import { SnackbarService } from '../../auth/services/sanckbar.service';
+import { CartpageComponent } from '../../features/cart/cartpage/cartpage.component';
 @Component({
   selector: 'app-layout',
-  imports: [MatToolbarModule,MatIconModule,RouterModule,MatSidenavModule,CommonModule,MatListModule,MatButtonModule],
+  imports: [CartpageComponent,MatToolbarModule,MatIconModule,RouterModule,MatSidenavModule,CommonModule,MatListModule,MatButtonModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
@@ -19,23 +20,31 @@ image!:string;
 collapsed: boolean = false;
 isScreenSmall = false;
 sidenavOpened = true;
+isModalVisible = false;
 
+
+showModal() {
+  this.isModalVisible = true;
+}
+hideModal() {
+   this.isModalVisible = false;
+}
 menus :any=[
-  {
-    label: `Dashboard`,
-    redirectURL: '/dashboard',
-    icon: 'dashboard',
-  },
+  // {
+  //   label: `Dashboard`,
+  //   redirectURL: '/dashboard',
+  //   icon: 'dashboard',
+  // },
   {
     label: 'All Products',
     redirectURL: '/all-products',
     icon: 'check_circle',
   },
-  {
-    label: 'Add Product',
-    redirectURL: '/add-product',
-    icon: 'add',
-  },
+  // {
+  //   label: 'Add Product',
+  //   redirectURL: '/add-product',
+  //   icon: 'add',
+  // },
   {
     label: 'Logout',
     redirectURL: '/logout',
