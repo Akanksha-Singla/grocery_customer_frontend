@@ -1,0 +1,46 @@
+<div class="checkout-container">
+    <!-- Select Address Section -->
+    <h2>Checkout</h2>
+    <section>
+      <h3>Select Shipping Address</h3>
+      <div *ngIf="shippingAddress.length > 0;">
+        <mat-radio-group class="address-list" [(ngModel)]="selectedAddress">
+          <mat-radio-button
+            *ngFor="let address of shippingAddress"
+            [value]="address._id"
+          >
+            <p>{{ address.label }}</p>
+            <p>{{ address.street }}, {{ address.city }}</p>
+            <p>{{ address.state }} - {{ address.postalCode }}, {{ address.country }}</p>
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+        <p> Add a new address to proceed.</p>
+        <button mat-raised-button color="primary" [routerLink]="'/address'">
+          Add Address
+        </button>
+      
+    </section>
+  
+    <!-- Select Payment Mode Section -->
+    <section>
+      <h3>Select Payment Mode</h3>
+       <mat-radio-group [(ngModel)]="selectedPaymentMode">
+        <!-- <mat-radio-button value="UPI">UPI</mat-radio-button> -->
+        <mat-radio-button value="CoD">Cash on Delivery</mat-radio-button>
+      </mat-radio-group> 
+    </section>
+  
+    <!-- Place Order Button -->
+    <div class="actions">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!selectedAddress || !selectedPaymentMode"
+        (click)="confirmOrder()"
+      >
+        Place Order
+      </button>
+    </div>
+  </div>
+  

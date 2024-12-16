@@ -20,14 +20,17 @@
       mat-button
       *ngFor="let item of menus"
       [routerLink]="item.label !== 'Logout' ? item.redirectURL : null"
+      routerLinkActive="active" 
+    [routerLinkActiveOptions]="{ exact: true }"
       (click)="handleMenuClick(item.label)"
+      class="navItems"
     >
       <mat-icon>{{ item.icon }}</mat-icon>
       {{ item.label }}
     </a>
   </div>
 
-  <span class="space-between"> <mat-icon  (click)="showModal()">shopping_cart</mat-icon></span>
+  <span class="space-between"> <mat-icon  (click)="showModal()" class="cartIcon">shopping_cart</mat-icon></span>
   @if(isModalVisible){
     <app-cartpage  (close)="hideModal()"></app-cartpage>
   }

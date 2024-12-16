@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IProduct } from '../models/product';
 import { MatCardModule } from '@angular/material/card';
-import { RouterModule } from '@angular/router';
+import { Route, Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,7 +29,7 @@ export class ProductItemComponent {
   ngOnIt() {
     console.log('ngonit');
   }
-  constructor(private cartService:CartserviceService,private snackbar:SnackbarService){}
+  constructor(private cartService:CartserviceService,private snackbar:SnackbarService,private router :Router){}
   generateStars(rating: number): string[] {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
@@ -75,7 +75,9 @@ this.snackbar.showError("Error in adding to card")
    this.cartService.addToCart(product_id,cartData).subscribe({
     next:(response)=>{
       console.log(response)
-      this.snackbar.showSuccess("Product added successfully")
+      this.snackbar.showSuccess("Product added successfully");
+      this.router.navigate(['/cart'])
+    
     },
     error:(error)=>{
  console.error(error)

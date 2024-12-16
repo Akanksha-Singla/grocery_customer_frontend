@@ -1,13 +1,16 @@
 <div class="product-container">
-  <app-searchbar></app-searchbar>
-
-  <div class="product-section">
-   
-    
-@for( product of allProducts; track product){
+  
+  <section class="search-ml"> <app-searchbar (search)="filterSellers($event)"></app-searchbar></section>
+ 
+  @if(allProducts.length>0)
+ { <div class="product-section">
+   @for( product of allProducts; track product){
   <app-product-item [product]= "product"></app-product-item>
+   }
+</div>}
+@else{
+  <p>no product found</p>
 }
-</div>
 </div>
  
      

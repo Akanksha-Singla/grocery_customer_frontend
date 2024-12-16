@@ -18,8 +18,6 @@ export class CategoryService {
     const data = this.http.get<IAllCategory>(this.baseUrlCategory)
     return data
   }
-  addCategory(categoryData:ICategory):Observable<IAddCategory>
-{
-return this.http.post<IAddCategory>(this.baseAddCategoryUrl,{...categoryData})
-}
+
+
 }

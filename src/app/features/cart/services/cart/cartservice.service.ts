@@ -14,10 +14,20 @@ export class CartserviceService {
   
   baseAddtoCartUrl = environment.apiEndpoint + 'customer/cart/add-to-cart/';
   baseGetCartUrl = environment.apiEndpoint + 'customer/cart/getcart';
+  baseUpdateQtyUrl = environment.apiEndpoint + 'customer/cart/updateproductquantity/';
+  baseDeleteUrl = environment.apiEndpoint +'customer/cart/removeProduct/'
   
 
  public addToCart(_id:string,cartData:{quantity_purchased:number}):Observable<IAddCartResponse>{
     const data = this.http.post<IAddCartResponse>(this.baseAddtoCartUrl+_id,{...cartData})
+    return data;
+  }
+  public updateQuantity(_id:string,cartData:{quantity_purchased:number}):Observable<IAddCartResponse>{
+    const data = this.http.put<IAddCartResponse>(this.baseUpdateQtyUrl+_id,{...cartData})
+    return data;
+  }
+  public deleteProduct(_id:string):Observable<any>{
+    const data = this.http.delete<any>(this.baseDeleteUrl+_id)
     return data;
   }
  public getCart():Observable<any> {

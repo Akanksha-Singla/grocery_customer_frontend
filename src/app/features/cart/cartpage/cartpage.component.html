@@ -1,12 +1,30 @@
 <div class="modal-overlay">
   
-    <div class="modal-content" >
-        <mat-icon (click)="closeModal()">close</mat-icon> 
-        cart-items
-        <div>
-            order-summary
-            </div>
-        </div>
+    <div class="modal-content">
+        <div class="myCart-header">
+             <span> My Cart </span> 
+     <span>  <mat-icon (click)="closeModal()">close</mat-icon></span>  </div>
+       
+      @if(cartItems.length >0){   @for(cart of cartItems;track cart){
+          
+        <app-cart-item [cartItem]="cart"  (totalUpdated)="recalculateTotal()"  (deleteProduct)="onDeleteProduct($event)"></app-cart-item>
+    }}
+    @else{<p> Cart is empty</p>}
+     
+     <hr>
+     <div class="bill-details">
+        <h3>Bill Details:</h3>
+        <p><span>Items Total:</span> {{itemTotal |currency:'INR'}}</p>
+        <p><span>Handling Charge:</span> {{0 | currency:'INR'}}</p>
+        <p><span>Delivery Charge:</span> {{0 | currency:'INR'}}</p>
+        <p><span>Grand Total:</span> <b>{{itemTotal | currency:'INR' }}</b></p>
+      </div>
+
+    
+      <button mat-flat-button class="proceed-button" routerLink="/checkout" (click)="closeModal()">
+        Proceed
+      </button>
+
         
 </div>
 

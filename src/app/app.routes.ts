@@ -4,6 +4,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AuthGuard } from './auth/gaurds/auth-guards';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { CartpageComponent } from './features/cart/cartpage/cartpage.component';
+import { AddShippingAddressComponent } from './features/shipping-address/add-shipping-address/add-shipping-address.component';
+import { CheckoutPageComponent } from './features/checkOut/checkout-page/checkout-page.component';
+import { CategoryWiseProductComponent } from './features/product/category-wise-product/category-wise-product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -36,7 +39,26 @@ export const routes: Routes = [
         loadComponent:()=> import('./features/cart/cartpage/cartpage.component').then(
           (m)=>CartpageComponent
         )
-      }
+      },
+      {
+        path:'address',
+        loadComponent:()=> import('./features/shipping-address/add-shipping-address/add-shipping-address.component').then(
+          (m)=>AddShippingAddressComponent
+        )
+      },
+      {
+        path:'checkout',
+        loadComponent:()=> import('./features/checkOut/checkout-page/checkout-page.component').then(
+          (m)=>CheckoutPageComponent
+        )
+      },
+      {
+        path:'categories',
+        loadComponent:()=> import('./features/product/category-wise-product/category-wise-product.component').then(
+          (m)=>CategoryWiseProductComponent
+        )
+      },
+
      
     ],
   },

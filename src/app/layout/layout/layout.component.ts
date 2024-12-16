@@ -40,11 +40,11 @@ menus :any=[
     redirectURL: '/all-products',
     icon: 'check_circle',
   },
-  // {
-  //   label: 'Add Product',
-  //   redirectURL: '/add-product',
-  //   icon: 'add',
-  // },
+  {
+    label: 'Categories',
+    redirectURL: '/categories',
+    icon: 'category',
+  },
   {
     label: 'Logout',
     redirectURL: '/logout',

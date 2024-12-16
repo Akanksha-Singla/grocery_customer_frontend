@@ -97,3 +97,35 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .cartIcon{
+          
+    &:hover {
+      scale: 1.5;
+      transition: 1s ease;
+    }
+    &.active {
+      background-color: rgb(17, 184, 17);
+      color: #fff;
+      border-bottom:green;
+    }
+  }
+.navItems{
+  font-size: 18px;
+  &.active {
+    color: white;
+    background-color: rgba(0, 255, 98, 0.438); // Add the background color for active state
+    border-radius: 4px; // Optional: Adds rounded corners for better visuals
+    padding: 5px 10px; // Optional: Adds spacing inside the active nav item
+  }
+}
+.navItems:hover{
+
+    scale: 1.1;
+    transition: 1s ease;
+  
+
+}
+.navItems:active{
+  color:blue
+}

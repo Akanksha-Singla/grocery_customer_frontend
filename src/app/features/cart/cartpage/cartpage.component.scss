@@ -14,6 +14,7 @@
   
   .modal-content {
     background-color: #eaf1eb;
+    color:black;
     padding: 30px;
     border-radius: 10px;
     text-align: center;
@@ -43,3 +44,41 @@
       .mat-mdc-form-field {
         display:flex
       }
+      .myCart-header{
+        width: 100%;
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+      }
+      .bill-details {
+        background-color: #f9f9f9; /* Light background for contrast */
+        padding: 1rem;
+        border: 1px solid #e0e0e0; /* Subtle border */
+        border-radius: 8px; /* Rounded corners */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+        margin: 1rem 0;
+        max-width: 400px; /* Constrain width for better readability */
+        font-family: 'Arial', sans-serif;
+        font-size: 1rem;
+        color: #333; /* Dark text color for readability */
+      }
+      
+      .bill-details h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        color: green;
+        text-align: left;
+      }
+      
+      .bill-details p {
+        margin: 0.3rem 0;
+        display: flex;
+        justify-content: space-between; /* Align text and values */
+      }
+      
+      .bill-details span {
+        font-weight: bold; /* Highlight labels */
+      }
+      
+     

@@ -23,6 +23,8 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { CardSwiperComponent } from '../../../shared/component/card-swiper/card-swiper.component';
+import { CategoryService } from '../sevices/product/category.service';
+import { ICategory } from '../models/category';
 @Component({
   selector: 'app-all-products',
   imports: [
@@ -38,21 +40,26 @@ import { CardSwiperComponent } from '../../../shared/component/card-swiper/card-
     SearchbarComponent,
     CommonModule,
     ProductItemComponent,
-    CardSwiperComponent
+   
   ],
   templateUrl: './all-products.component.html',
   styleUrl: './all-products.component.scss',
 })
 export class AllProductsComponent {
-  allProducts:IProduct[] = []
-constructor(private productService :ProductService, private snackbar:SnackbarService){}
+  allProducts:IProduct[] = [];
+  allCategories:ICategory[] =[]
+constructor(private productService :ProductService, private snackbar:SnackbarService,private categorySErvice:CategoryService){}
   ngOnInit():void{
-this.getProducts()
+this.getProducts();
+;
   }
-
+  filterSellers(searchTerm: any) {
+    console.log('emitted', searchTerm);
+    this.searchProduct(searchTerm);
+  }
   getProducts(){
     this.productService.getAllProducts().subscribe({
-next:(response)=>{
+    next:(response)=>{
   this.allProducts = response.data
   console.log(response.data)
   this.snackbar.showSuccess("Products fetched successfully")
@@ -66,4 +73,23 @@ error:(err)=>{
   handleCardClick(card: any) {
     console.log('Clicked card:', card);
   }
+
+
+  searchProduct(query: any) {
+    console.log('catched', query);
+    if (!query) {
+      this.getProducts();
+    }
+    this.productService.searchProduct(query).subscribe({
+      next: (response) => {
+        console.log('searched data', response.data);
+        this.allProducts = response.data;
+      
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
 }

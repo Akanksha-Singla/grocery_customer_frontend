@@ -18,3 +18,18 @@ export interface ICartItem {
       _id:string
     };
   }
+
+  export interface IAdress{
+    label: string; 
+    street: string; 
+    city: string;
+    state: string; 
+    postalCode: string;
+   isDefault?: boolean; 
+  }
+  export interface IAdressResponse{
+    statusCode: number;
+    success: boolean;
+    message: string;
+    data:any
+  }

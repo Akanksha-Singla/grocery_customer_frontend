@@ -1,0 +1,30 @@
+
+  
+<div class="category-container">
+    <!-- Categories Navigation -->
+    <ul class="category-nav ">
+      <li
+        *ngFor="let category of allCategories"
+       
+        [class.active]="category._id === selectedCategoryId"
+        (click)="loadProducts(category._id)"
+      >
+        {{ category.name | titlecase }}
+    </li>
+    </ul>
+  
+    <!-- Product List -->
+    <div class="product-section">
+      @if(products.length>0){
+        @for( product of products; track product){
+            <app-product-item [product]= "product"></app-product-item>
+          }
+        }    
+     @else{
+        <p class="no-products">No products available in this category.</p>
+      }
+      
+     
+    </div>
+  </div>
+  

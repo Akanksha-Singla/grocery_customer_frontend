@@ -1,1 +1,28 @@
-<p>cart-item works!</p>
+<div class="cart-item">
+    <div class="cart-image-price">
+        <section class="section-image">
+            <img src={{cartItem.product_image}} class="cart-item-image"/>
+        </section>
+        <section class="cart-content">
+            <span>{{cartItem.product_name}}</span>
+            <br>
+            <span>{{cartItem.price * cartItem.quantity_purchased|currency:'INR'}}</span>
+        </section>
+        
+    </div>
+   
+   
+    <div>
+        <mat-icon (click)="remove(cartItem.product_id)" class="deleteIcon">delete</mat-icon>
+         <div class="quantityBlock">
+      
+        @if(cartItem.quantity>cartItem.quantity_purchased)
+      {<mat-icon (click)="add(cartItem)">add</mat-icon>}
+        <span>{{cartItem.quantity_purchased}}</span>
+        <mat-icon (click)="dec(cartItem)">remove</mat-icon>
+    </div>
+    </div>
+   
+
+</div>
+  

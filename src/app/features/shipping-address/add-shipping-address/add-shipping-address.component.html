@@ -1,0 +1,118 @@
+<div class="addForm-container">
+
+    <mat-card class="mat-elevation-z8">
+      <mat-card-header></mat-card-header>
+      <mat-card-title class="center-text">Add Address</mat-card-title>
+  
+      <mat-card-content>
+        <form
+          [formGroup]="addressForm"
+          (ngSubmit)="onSubmit()"
+          class="form-container"
+        >
+          <div class="flexItems">
+            <!-- Label -->
+            <mat-form-field appearance="outline">
+              <mat-label>Label</mat-label>
+              <input
+                matInput
+                formControlName="label"
+                type="text"
+                placeholder="Address Label (e.g., Home, Office)"
+              />
+              <mat-icon matPrefix>label</mat-icon>
+              <mat-error>{{ getErrorMessage('label') }}</mat-error>
+            </mat-form-field>
+  
+            <!-- Street -->
+            <mat-form-field appearance="outline">
+              <mat-label>Street</mat-label>
+              <input
+                matInput
+                formControlName="street"
+                type="text"
+                placeholder="Street Address"
+              />
+              <mat-icon matPrefix>home</mat-icon>
+              <mat-error>{{ getErrorMessage('street') }}</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="flexItems">
+            <!-- City -->
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input
+                matInput
+                formControlName="city"
+                type="text"
+                placeholder="City"
+              />
+              <mat-icon matPrefix>location_city</mat-icon>
+              <mat-error>{{ getErrorMessage('city') }}</mat-error>
+            </mat-form-field>
+  
+            <!-- State -->
+            <mat-form-field appearance="outline">
+              <mat-label>State</mat-label>
+              <input
+                matInput
+                formControlName="state"
+                type="text"
+                placeholder="State"
+              />
+              <mat-icon matPrefix>map</mat-icon>
+              <mat-error>{{ getErrorMessage('state') }}</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="flexItems">
+            <!-- Postal Code -->
+            <mat-form-field appearance="outline">
+              <mat-label>Postal Code</mat-label>
+              <input
+                matInput
+                formControlName="postalCode"
+                type="text"
+                placeholder="Postal Code"
+              />
+              <mat-icon matPrefix>mail</mat-icon>
+              <mat-error>{{ getErrorMessage('postalCode') }}</mat-error>
+            </mat-form-field>
+  
+            <!-- Country -->
+            <mat-form-field appearance="outline">
+              <mat-label>Country</mat-label>
+              <input
+                matInput
+                formControlName="country"
+                type="text"
+                placeholder="Country"
+              />
+              <mat-icon matPrefix>public</mat-icon>
+              <mat-error>{{ getErrorMessage('country') }}</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="flexItems">
+            <!-- Default Address Checkbox -->
+            <mat-checkbox formControlName="isDefault">
+              Set as Default Address
+            </mat-checkbox>
+          </div>
+  
+          <!-- Submit and Reset Buttons -->
+          <div class="flexItems">
+            <button mat-flat-button type="submit" color="primary">
+              {{ addressForm.valid ? 'Save Address' : 'Submit' }}
+            </button>
+  
+            <button mat-stroked-button type="reset">
+              RESET
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
