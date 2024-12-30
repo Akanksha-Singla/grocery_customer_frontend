@@ -11,7 +11,7 @@ export class PlaceOrderService {
 
   constructor(private http:HttpClient) {  }
   
-  basePlaceOrderUrl= environment.apiEndpoint + 'customer/order/place-order/'
+  basePlaceOrderUrl= environment.apiEndpoint + 'customer/order/place-order/';
 
 
   placeOrder(_id:string,orderDetails:IPlaceOrder):Observable<IPlaceOrderResponse>{
@@ -19,11 +19,11 @@ export class PlaceOrderService {
     const data = this.http.post<IPlaceOrderResponse>(this.basePlaceOrderUrl+_id,{...orderDetails})
      return data
   }
-
+  
 }
 export interface IPlaceOrder{
   address:string;
-  paymentMode:string
+  paymentMode?:string
 }
 
 export interface IPlaceOrderResponse{

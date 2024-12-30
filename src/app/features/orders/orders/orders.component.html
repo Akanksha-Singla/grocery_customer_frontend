@@ -1,0 +1,74 @@
+<div class="search-filterContainer">
+    <div class="filter">
+      <mat-icon matPrefix>filter</mat-icon>
+      <label>Filter order status</label>
+     <select [value]="selectedStatus" (change)="onStatusChange($event)" class="order-filter">
+            <option *ngFor="let status of orderStatus" [value]="status">
+              {{ status | titlecase }} 
+            </option>
+    </select>
+        
+       
+      </div>
+  </div>
+  
+  <div class="table-container">
+    <table mat-table [dataSource]="dataSource">
+     
+  
+    <ng-container matColumnDef="_id" >
+        <th mat-header-cell *matHeaderCellDef>Order Id</th>
+        <td mat-cell *matCellDef="let element" (click)="showModal(element._id)">{{element._id}}</td>
+     </ng-container>
+    
+   
+      <ng-container matColumnDef="totalPrice">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let element">{{ element.totalPrice }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef>Address</th>
+        <td mat-cell *matCellDef="let element">{{ element.address.street }}</td>
+      </ng-container>
+      <ng-container matColumnDef="paymentStatus">
+        <th mat-header-cell *matHeaderCellDef>Payment Status </th>
+        <td mat-cell *matCellDef="let element">
+        {{element.paymentStatus | titlecase}}
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="orderStatus">
+        <th mat-header-cell *matHeaderCellDef>Order Status</th>
+        <td mat-cell *matCellDef="let element">
+        {{element.orderStatus | titlecase}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>Created At </th>
+        <td mat-cell *matCellDef="let element">
+        {{element.createdAt | date}}
+        </td>
+      </ng-container>
+  
+    
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 15]"
+      [length]="totalItems"
+      (page)="onPageChange()"
+      [pageSize]="5"
+      showFirstLastButtons
+      aria-label="Select page of products"
+    >
+    </mat-paginator>
+
+   @if(isModalVisible){
+      <app-order-item (close)="hideModal()"  [orderId]="{selected_id}"> </app-order-item>
+          }
+  </div> 
+  

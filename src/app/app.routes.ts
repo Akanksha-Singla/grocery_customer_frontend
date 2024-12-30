@@ -7,6 +7,9 @@ import { CartpageComponent } from './features/cart/cartpage/cartpage.component';
 import { AddShippingAddressComponent } from './features/shipping-address/add-shipping-address/add-shipping-address.component';
 import { CheckoutPageComponent } from './features/checkOut/checkout-page/checkout-page.component';
 import { CategoryWiseProductComponent } from './features/product/category-wise-product/category-wise-product.component';
+import { ThankyouComponent } from './features/checkOut/thankyou/thankyou.component';
+import { OrdersComponent } from './features/orders/orders/orders.component';
+import { PageNotFoundComponent } from './shared/component/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -19,6 +22,10 @@ export const routes: Routes = [
   { 
     path: 'register', 
     component: RegisterComponent 
+  },
+  { 
+    path: 'page-not-found', 
+    component: PageNotFoundComponent 
   },
   
  
@@ -58,11 +65,23 @@ export const routes: Routes = [
           (m)=>CategoryWiseProductComponent
         )
       },
+      {
+        path:'thankyou',
+        loadComponent:()=> import('./features/checkOut/thankyou/thankyou.component').then(
+          (m)=>ThankyouComponent
+        )
+      },
+      {
+        path:'all-orders',
+        loadComponent:()=> import('./features/orders/orders/orders.component').then(
+          (m)=>OrdersComponent
+        )
+      },
 
      
     ],
   },
 
  
-  { path: '**', redirectTo: 'login' },
+  { path: '**', redirectTo: 'page-not-found' },
 ];

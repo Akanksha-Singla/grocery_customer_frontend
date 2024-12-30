@@ -1,18 +1,15 @@
 <mat-toolbar class="custom-toolbar">
   <!-- Sidenav Toggle for Small Screens -->
-  <button mat-icon-button *ngIf="isScreenSmall" (click)="toggleSidenav()">
-    <mat-icon>menu</mat-icon>
-  </button>
+  
+    <mat-icon *ngIf="isScreenSmall" (click)="toggleSidenav()">menu</mat-icon>
+  
 
   <!-- App Title -->
- 
-     <span>
+
+  <span>
     <span class="blink-title-black">Blink</span>
     <span class="blink-title-white">It</span>
   </span>
-  
- 
- 
 
   <!-- Horizontal Navbar for Large Screens -->
   <div *ngIf="!isScreenSmall" class="horizontal-nav">
@@ -20,8 +17,8 @@
       mat-button
       *ngFor="let item of menus"
       [routerLink]="item.label !== 'Logout' ? item.redirectURL : null"
-      routerLinkActive="active" 
-    [routerLinkActiveOptions]="{ exact: true }"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
       (click)="handleMenuClick(item.label)"
       class="navItems"
     >
@@ -30,9 +27,16 @@
     </a>
   </div>
 
-  <span class="space-between"> <mat-icon  (click)="showModal()" class="cartIcon">shopping_cart</mat-icon></span>
+  <span class="space-between">
+    <mat-icon (click)="showModal()" class="cartIcon" matPrefix matTooltip="cart"
+      >shopping_cart</mat-icon
+    >
+    <mat-icon [matTooltip]="userName">account_circle</mat-icon>
+    <mat-icon (click)="logout()" matTooltip="Logout">exit_to_app</mat-icon>
+  </span>
+
   @if(isModalVisible){
-    <app-cartpage  (close)="hideModal()"></app-cartpage>
+  <app-cartpage (close)="hideModal()"></app-cartpage>
   }
 </mat-toolbar>
 
@@ -65,8 +69,5 @@
 
 <!-- Router Outlet for Large Screens -->
 <div *ngIf="!isScreenSmall" class="body-container">
- 
-    <router-outlet></router-outlet>
- 
- 
+  <router-outlet></router-outlet>
 </div>

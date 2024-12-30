@@ -1,0 +1,29 @@
+.search-filterContainer{
+    width:350px;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.order-filter{
+    width:90%;
+    height:35px;
+    font-size: medium;
+    text-align: justify;
+    padding-left:0.5rem ;
+}
+
+.filter{
+    display: flex;
+    gap:5px;
+}
+
+label{
+margin-left: 2px;
+}
+.table-container {
+  
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+   
+    background-color: #529060;
+  }

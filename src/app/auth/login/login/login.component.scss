@@ -1,14 +1,23 @@
 .login-container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
+ 
     height: 100vh;
     width: 100%;
+    
+    
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-
+  
 .form-container  button {
-width: 100%;
+width: 90%;
 margin-bottom: 1rem;
 }
 // .mat-card{
@@ -26,9 +35,23 @@ margin-bottom: 1rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    width:500px;
+  
 }
 
 .form-container mat-form-field{
     width: 100%
 }
+
+@media (max-width: 767px) {
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        width: 95%; 
+    }
+  }
+  
+ 

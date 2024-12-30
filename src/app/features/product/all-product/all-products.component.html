@@ -7,24 +7,17 @@
    @for( product of allProducts; track product){
   <app-product-item [product]= "product"></app-product-item>
    }
-</div>}
+</div>
+<div class="btn-container">
+<button  mat-flat-button (click)="previousPage()"  [disabled]="currentPage === 1">Previous</button>
+<button mat-flat-button (click)="nextPage()"  [disabled]="currentPage === totalPages">Next</button>
+</div>
+}
+
 @else{
   <p>no product found</p>
 }
+
 </div>
  
      
- <!-- <div class="container">
-  <app-searchbar></app-searchbar>
-  <div >
-    <app-card-swiper 
-      [cards]="allProducts" 
-      [swipeSpeed]="500" 
-      [visibleCards]="3" 
-      (cardClick)="handleCardClick($event)"
-      >
-    </app-card-swiper>
-  </div>
-</div> -->
-      
-      <!-- (cardClick)="handleCardClick($event)" -->

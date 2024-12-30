@@ -8,14 +8,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule,Router } from '@angular/router';
 import { SnackbarService } from '../../auth/services/sanckbar.service';
 import { CartpageComponent } from '../../features/cart/cartpage/cartpage.component';
+import { AuthService } from '../../auth/services/auth.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'app-layout',
-  imports: [CartpageComponent,MatToolbarModule,MatIconModule,RouterModule,MatSidenavModule,CommonModule,MatListModule,MatButtonModule],
+  imports: [CartpageComponent,MatToolbarModule,MatIconModule,RouterModule,MatSidenavModule,CommonModule,MatListModule,MatButtonModule,MatTooltipModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
 export class LayoutComponent {
- userImage: string = '';
+userImage: string = '';
+userName:string =''
 image!:string;
 collapsed: boolean = false;
 isScreenSmall = false;
@@ -46,16 +49,21 @@ menus :any=[
     icon: 'category',
   },
   {
-    label: 'Logout',
-    redirectURL: '/logout',
-    icon: 'exit_to_app',
+    label: 'My Orders',
+    redirectURL: '/all-orders',
+    icon: 'store',
   },
+  // {
+  //   label: 'Logout',
+  //   redirectURL: '/logout',
+  //   icon: 'exit_to_app',
+  // },
 ];
-constructor(private snackBar:SnackbarService,public router:Router){
+constructor(private snackBar:SnackbarService,public router:Router,private authService:AuthService){
 
 }
 checkScreenSize() {
-  this.isScreenSmall = window.innerWidth < 768;
+  this.isScreenSmall = window.innerWidth < 803;
   if (this.isScreenSmall) {
     this.sidenavOpened = false; // Close sidenav on small screens
   }
@@ -63,6 +71,7 @@ checkScreenSize() {
 
 ngOnInit(): void {
   this.checkScreenSize();
+  this.getUser()
 }
 @HostListener('window:resize', [])
 onResize() {
@@ -94,5 +103,17 @@ logout() {
   sessionStorage.removeItem('role');
   this.snackBar.showError('Logged out successfully...');
   this.router.navigate(['/']);
+}
+
+getUser(){
+this.authService.getUser().subscribe({
+  next:(response)=>{
+  this.userName = response.data.username
+  
+  },
+  error:(error)=>{
+    console.log(error)
+  }
+})
 }
 }

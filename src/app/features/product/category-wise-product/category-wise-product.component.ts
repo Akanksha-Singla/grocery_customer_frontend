@@ -23,6 +23,7 @@ export class CategoryWiseProductComponent {
   // Fetch all categories on initialization
   this.getAllCategories();
 }
+
 getAllCategories(): void {
   this.categorySErvice.allCategories().subscribe({
     next: (response) => {

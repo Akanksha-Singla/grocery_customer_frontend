@@ -3,9 +3,9 @@
     top: 0;
     width: 100%;
     z-index: 1000;
-   
     box-shadow: 0 4px 6px #2d442c;
     display: flex;
+    align-items: center;
    
   }
   
@@ -105,7 +105,7 @@
       transition: 1s ease;
     }
     &.active {
-      background-color: rgb(17, 184, 17);
+      background-color: rgba(252, 252, 252, 0.164);
       color: #fff;
       border-bottom:green;
     }
@@ -114,9 +114,11 @@
   font-size: 18px;
   &.active {
     color: white;
-    background-color: rgba(0, 255, 98, 0.438); // Add the background color for active state
+    background-color: rgba(252, 252, 252, 0.164); // Add the background color for active state
     border-radius: 4px; // Optional: Adds rounded corners for better visuals
     padding: 5px 10px; // Optional: Adds spacing inside the active nav item
+    height: 65px;
+    margin-left: 5px;
   }
 }
 .navItems:hover{
@@ -128,4 +130,15 @@
 }
 .navItems:active{
   color:blue
+}
+
+mat-icon{
+
+  margin: 1rem;
+}
+
+mat-icon:hover{
+  scale: 1.1;
+  transition: 1s ease;
+
 }

@@ -48,9 +48,15 @@ margin-bottom:1.5rem;
     
     padding:3px 5px
      }
+     .delete-quantityBlock{
+        display: flex;
+        flex-direction: column;
+     }
 
      .deleteIcon{
        color: red;
+       align-self: flex-end;
+       margin: 0.5rem;
      }
      mat-icon:hover{
         scale: 1.5;

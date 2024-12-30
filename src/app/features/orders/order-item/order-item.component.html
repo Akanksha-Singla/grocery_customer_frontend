@@ -1,0 +1,30 @@
+<div class="modal-overlay">
+    <div class="modal-content">
+      <div class="order-header">
+        <span class="order-title">Order Details</span>
+        <mat-icon class="close-icon" (click)="closeModal()">close</mat-icon>
+      </div>
+  
+   
+        <div> 
+            @for(item of orderDetails ; track item){  
+                <div class="order-items">
+                <span class="product-name">{{ item?.productName }}</span>
+                <span class="product-quantity">Qty: {{ item?.quantity_purchased }}</span>
+                <span class="product-price">{{ item?.price | currency:'INR'  }}</span>
+                <hr class="divider">
+            </div>
+                }
+              
+     
+     
+        <hr class="divider">
+      </div>
+  
+      <div class="order-total">
+        <span>Total:</span>
+        <span class="total-amount">{{ totalAmount | currency :'INR' }}</span>
+      </div>
+    </div>
+  </div>
+  
