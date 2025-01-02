@@ -22,8 +22,9 @@ export class CartserviceService {
     const data = this.http.post<IAddCartResponse>(this.baseAddtoCartUrl+_id,{...cartData})
     return data;
   }
-  public updateQuantity(_id:string,cartData:{quantity_purchased:number}):Observable<IAddCartResponse>{
-    const data = this.http.put<IAddCartResponse>(this.baseUpdateQtyUrl+_id,{...cartData})
+  public updateQuantity(_id:string,quantity_purchased:number):Observable<IAddCartResponse>{
+    const cart ={quantity_purchased:quantity_purchased}
+    const data = this.http.put<IAddCartResponse>(this.baseUpdateQtyUrl+_id,{...cart})
     return data;
   }
   public deleteProduct(_id:string):Observable<any>{

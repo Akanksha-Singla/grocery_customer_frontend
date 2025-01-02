@@ -8,6 +8,11 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { SnackbarService } from '../../../auth/services/sanckbar.service';
 import { CommonModule } from '@angular/common';
+import { Store } from '@ngrx/store';
+import * as CartActions from "../store/cart.action"
+import { loadCartItems, loadCartSuccess } from '../store/cart.action';
+
+import { getCart } from '../store/cart.selector';
 @Component({
   selector: 'app-cartpage',
   imports: [
@@ -32,33 +37,42 @@ export class CartpageComponent {
 
   constructor(
     private cartService: CartserviceService,
-    private snackbar: SnackbarService
+    private snackbar: SnackbarService,
+    private store:Store
   ) {
     console.log('cart page');
     this.getCartItems();
   }
+ 
 
-  ngOnIt() {
-    // this.getCartItems();
+  ngOnInit() {
+    // ...
   }
+
 
   getCartItems() {
-    this.cartService.getCart().subscribe({
-      next: (response) => {
-        this.cartItems = response.data[0].items;
-        this.itemTotal = response.data[0].total_amount;
-        this.cartId = response.data[0]._id;
-        console.log(this.cartId);
-        // Store the cartId in local storage
-        localStorage.setItem('cartId', this.cartId);
-        console.log('total', response.data);
-        console.log('cart-item', this.cartItems);
-      },
-      error: (error) => {
-        console.error(error);
-      },
+    this.store.dispatch(CartActions.loadCartItems());
+    this.store.select(getCart).subscribe((item: any) => {
+      console.log("Data received from store:", item);
+  
+      if (!item) {
+        console.error("Cart items are undefined");
+        return;
+      }
+
+      // Adjust based on item structure
+      this.cartItems = item.items || []; // Ensure fallback to empty array
+      this.itemTotal = item.total_amount || 0; // Fallback to 0
+      this.cartId = item._id || null; // Fallback to null
+  
+      console.log("Cart ID:", this.cartId);
+      localStorage.setItem('cartId', this.cartId || '');
+      console.log("Total:", this.itemTotal);
+      console.log("Cart items:", this.cartItems);
     });
   }
+
+
   recalculateTotal() {
     this.itemTotal = this.cartItems.reduce(
       (total: number, item: any) =>
