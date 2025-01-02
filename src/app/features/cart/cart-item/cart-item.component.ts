@@ -53,7 +53,7 @@ this.cartService.updateQuantity(product_id,cartData).subscribe(
     next:(response)=>{
       console.log("cart updated",response.data)
       this.totalUpdated.emit();
-this.snackbar.showSuccess("Product quantity updated")
+      this.snackbar.showSuccess("Product quantity updated")
     },
 error:(error)=>{
 console.error(error)
